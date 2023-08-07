@@ -15,3 +15,7 @@ This repo contains code necessary to spin up DynamoDB resources for this project
     terraform apply
     ```
     If you don't want to apply the changes to your aws account you can instead run `terraform plan`.
+
+## Notes
+
+Although [Reddit-Scraping](https://github.com/ViralRedditPosts/Reddit-Scraping) depends on this repo, I decided to make this a separate repo because I wanted to reduce the likelihood that a table is dropped while developing and using the scraping infrastructure.
