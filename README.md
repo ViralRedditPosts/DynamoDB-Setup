@@ -8,7 +8,7 @@ This repo contains code necessary to spin up DynamoDB resources for this project
     1. Install Terraform CLI
     2. Install AWS CLI and run `aws configure` and enter in your aws credentials.
 2. Clone this repository 
-3. Run the following:
+3. From within this repository run the following:
   
     ```sh
     terraform init
