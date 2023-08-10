@@ -1,6 +1,8 @@
-# DynamoDB-Setup
+# Infrastructure-Setup
 
-This repo contains code necessary to spin up DynamoDB resources for this project.
+This repo contains code necessary to spin up general infrastructure resources for this project. This includes DynamoDB, S3, and pushing a config file to S3. 
+
+**You must make a copy of `example_reddit.cfg` and rename it to `reddit.cfg` and replace the contents with your own values before starting.**
 
 ## How to use
 

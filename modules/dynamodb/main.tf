@@ -41,7 +41,7 @@ resource "aws_dynamodb_table" "reddit-dynamodb-table" {
   }
 
   ttl {
-    attribute_name = "TimeToExist"
+    attribute_name = ""
     enabled        = false
   }
 
