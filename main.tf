@@ -8,7 +8,6 @@ variable "info" {
   type = map(string)
   default = {
     name = "viralredditposts"
-    env = "dev"
   }
 }
 
@@ -22,17 +21,17 @@ locals {
 ##################
 # DynamoDB Setup #
 ##################
-module "dynamodb-table-rising-dev" {
+module "dynamodb-table-rising" {
   source = "./modules/dynamodb"
 
-  env = "${var.info.env}"
+  env = "${var.env}"
   reddit_view = "rising"
 }
 
-module "dynamodb-table-hot-dev" {
+module "dynamodb-table-hot" {
   source = "./modules/dynamodb"
 
-  env = "${var.info.env}"
+  env = "${var.env}"
   reddit_view = "hot"
 }
 
@@ -41,24 +40,24 @@ module "dynamodb-table-hot-dev" {
 ############
 # create s3 resource
 resource "aws_s3_bucket" "data-bucket" {
-  bucket = "data-${var.info.name}-${var.info.env}-${local.account_id}"
+  bucket = "data-${var.info.name}-${var.env}-${local.account_id}"
   force_destroy = true
 
   tags = {
-    Name        = "data-${var.info.name}-${var.info.env}-${local.account_id}"
-    Environment = "${var.info.env}"
+    Name        = "data-${var.info.name}-${var.env}-${local.account_id}"
+    Environment = "${var.env}"
     Project     = "viral-reddit-posts"
   }
 }
 
 # this is mainly for storing the PRAW package for the Lambda Function
 resource "aws_s3_bucket" "packages-bucket" {
-  bucket = "packages-${var.info.name}-${var.info.env}-${local.account_id}"
+  bucket = "packages-${var.info.name}-${var.env}-${local.account_id}"
   force_destroy = true
 
   tags = {
-    Name        = "packages-${var.info.name}-${var.info.env}-${local.account_id}"
-    Environment = "${var.info.env}"
+    Name        = "packages-${var.info.name}-${var.env}-${local.account_id}"
+    Environment = "${var.env}"
     Project     = "viral-reddit-posts"
   }
 }
@@ -72,7 +71,7 @@ resource "aws_s3_object" "reddit-cfg" {
   source = "./reddit.cfg"
   tags = {
     Name        = "config-file"
-    Environment = "${var.info.env}"
+    Environment = "${var.env}"
     Project     = "viral-reddit-posts"
   }
 }

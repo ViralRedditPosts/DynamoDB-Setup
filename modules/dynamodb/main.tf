@@ -56,7 +56,7 @@ resource "aws_dynamodb_table" "reddit-dynamodb-table" {
   }
 
   tags = {
-    Name        = "dynamodb-table-${var.reddit_view}"
+    Name        = "dynamodb-table-${var.reddit_view}-${var.env}"
     Environment = "${var.env}"
     Project     = "viral-reddit-posts"
   }

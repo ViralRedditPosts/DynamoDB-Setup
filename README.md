@@ -14,9 +14,18 @@ This repo contains code necessary to spin up general infrastructure resources fo
   
     ```sh
     terraform init
-    terraform apply
+    terraform workspace new dev
+    terraform plan -var-file="dev.tfvars" -out=dev-plan.out
+    terraform apply -var-file="dev.tfvars" dev-plan.out
     ```
-    If you don't want to apply the changes to your aws account you can instead run `terraform plan`.
+
+    For deploying to prd
+
+    ```sh
+    terraform workspace new prd  # or terraform workspace select prd if already created
+    terraform plan -var-file="prd.tfvars" -out=prd-plan.out
+    terraform apply -var-file="prd.tfvars" prd-plan.out
+    ```
 
 ## Notes
 
